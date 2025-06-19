@@ -1,0 +1,8 @@
+STL is a stands for Standard Template Library it is internal basic Library in cpp.
+and STL is divided in 4 parts - 1) containers
+                                2) Iterations
+                                3) Algorithm
+                                4) Funtors.
+1) containers : it is a data structure which is pre implemented inside stl Library.
+4) Funtors : Funtors are clases which works as like a fucntions.
+
