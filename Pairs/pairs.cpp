@@ -1,5 +1,4 @@
 // Pair is a class what is used to store 2 values.
-
 #include<bits/stdc++.h>
 using namespace std;
 
