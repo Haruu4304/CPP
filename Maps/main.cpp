@@ -24,7 +24,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printMap(map<int,string> m){
+void printMap(unordered_map<int,string> m){
     cout << "Size of map : " << m.size() << endl;
     for(auto &value : m){
         cout << value.first << " " << value.second << endl; //tc -> O(log(n))
@@ -32,40 +32,63 @@ void printMap(map<int,string> m){
 }
 
 int main(){
-    map<int,string> m;
-    m[1] = "abc"; //tc -> O(log(n)) here n is current size of map
-    m[5] = "cdc";
-    m[3] = "acd";
-    //another method to insert the map
-    m.insert({4, "afg"});
+    // map<int,string> m;
+    // m[1] = "abc"; //tc -> O(log(n)) here n is current size of map
+    // m[5] = "cdc";
+    // m[3] = "acd";
+    // //another method to insert the map
+    // m.insert({4, "afg"});
+    // printMap(m);
+
+    // //some functions on map -
+    // //map.find() -> it is used to find the value of given key.
+    // //it returns one iterator -
+    // //if any value is not present on that index/key 
+    // // then it simply returns m.end()
+    // auto it = m.find(3); //tc -> O(log(n))
+    // if(it == m.end()){
+    //     cout << "The given key is not present in map" << endl;
+    // }else{
+    //     cout << it->first << " " << it->second << endl;
+    // }
+
+    // //2nd function - erase:
+    // //erase -> it is used to erase the value.
+    // // tc -> O(log(n))
+    // //it takes 2 types of input - i) directly key and ii)iterator input
+    // //first method using key 
+    // m.erase(3); 
+    // //using iterator - 
+    // auto it = m.find(5);
+    // if(it != m.end()){
+    //     m.erase(it); //log(n)
+    // }
+
+    // m.clear(); // it works in all container
+    // printMap(m);
+
+    // printMap(m);
+
+    //unordered map 
+    //difference between map and unordered map is
+    //1. inbuilt implementation
+    //2. Time complexity
+    //3. valid key datatype
+
+    //it uses inbuilt hash function for implementation
+    //every key hash value is calculated
+    //insertion and access tc is O(1)
+    //here basic data types can be used whose inbuilt hash functions are available
+    // only those data types can be used in unordered 
+    // here in this unordered map we can't use pair here
+    //declare
+    unordered_map<int ,string> m;
+    m.insert({4,"Harsha"});
+    m.insert({8,"Faisal"});
+    m.insert({3,"Khan"});
+
+    auto it = m.find(8); // in unordered tc -> O(1)
+    cout << it->first << " " << it->second << endl;
     printMap(m);
 
-    //some functions on map -
-    //map.find() -> it is used to find the value of given key.
-    //it returns one iterator -
-    //if any value is not present on that index/key 
-    // then it simply returns m.end()
-    auto it = m.find(3); //tc -> O(log(n))
-    if(it == m.end()){
-        cout << "The given key is not present in map" << endl;
-    }else{
-        cout << it->first << " " << it->second << endl;
-    }
-
-    //2nd function - erase:
-    //erase -> it is used to erase the value.
-    // tc -> O(log(n))
-    //it takes 2 types of input - i) directly key and ii)iterator input
-    //first method using key 
-    m.erase(3); 
-    //using iterator - 
-    auto it = m.find(5);
-    if(it != m.end()){
-        m.erase(it); //log(n)
-    }
-
-    m.clear(); // it works in all container
-    printMap(m);
-
-    printMap(m);
 }
