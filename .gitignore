@@ -24,3 +24,8 @@ removeDup.exe
 substring.exe 
 anagram.exe
 mostFreq.exe 
+subset.exe
+uniqueSubset.exe
+permutationSpaces.exe
+permutationCase.exe 
+letterCasePermutation.exe 
