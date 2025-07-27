@@ -1,46 +1,64 @@
 /*
 Problem statement - 
-first negative number in every window size of k.
-return 0 if no negative number is present in that window size.
+First negative value in every window of size k 
+give the ans in vector
 */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void FirstNegativeNumber(vector<int> &v, int n, int k) {
-    int i=0,j=0;
-    list<int> negative;
-    while(j < n){
-        if(v[j] < 0){
-            negative.push_back(v[j]);
+vector<int> FindFirstNegative(vector<int> &arr , int size , int k){
+    int i = 0, j = 0;
+    list<int> r;           // stores negative values in current window
+    vector<int> ans;       // final result
+
+    while(j < size){
+        // step 1 - calculation
+        if(arr[j] < 0){
+            r.push_back(arr[j]);
         }
-        if(j-i+1 < k){
+
+        // step 2 - check window size
+        if(j - i + 1 < k){
             j++;
-        }else if(j-i+1 == k){
-            if(negative.size() == 0){
-                cout << "0";
-            }else{
-                cout << negative.front() << endl;
-                if(v[i] == negative.front()){
-                    negative.pop_front();
+        }
+        else if(j - i + 1 == k){
+            // step 3 - store answer
+            if(r.size() == 0){
+                ans.push_back(0);
+            }
+            else{
+                ans.push_back(r.front());
+                if(arr[i] == r.front()){
+                    r.pop_front();
                 }
-            }   
+            }
             i++;
             j++;
         }
     }
+    return ans;
 }
 
-
 int main(){
-    vector<int> v;
-    int n, k;
+    vector<int> arr;
+    int n , k;
+    cout << "Enter n and k: ";
     cin >> n >> k;
-    cout << "now enter the elements of the array" << endl;
+    cout << "Enter the elements in vector: ";
     for(int i=0; i<n; i++){
         int x;
         cin >> x;
-        v.push_back(x);
+        arr.push_back(x);
     }
-    FirstNegativeNumber(v, n, k);
+
+    vector<int> result = FindFirstNegative(arr , n , k);
+
+    cout << "Result: ";
+    for(auto value : result){
+        cout << value << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
