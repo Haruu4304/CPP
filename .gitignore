@@ -43,3 +43,8 @@ allUnique.exe
 strstr.exe
 toys.exe
 minimumSubstring.exe
+recursiveKnapsack.exe
+subsetProblem.exe
+memoKnapsack.exe
+equalPartition.exe
+top_down.exe

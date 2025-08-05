@@ -9,47 +9,37 @@ if yes then do the recursive call else take that value -
 #include<bits/stdc++.h>
 using namespace std;
 
-int knapsackMemo(vector<int>&wt, vector<int>&val, int W, int n){
-    //step 1 : base condition
+int t[100][1002];
+
+int memoKnapsack(vector<int> wt, vector<int> val, int W, int n){
+    //step 1 : create one matrix named as : t
+
+    //step 2 : base condition -
     if(n==0 || W == 0){
         return 0;
     }
 
-    int t[n+1][W+1];
-    memset(t, -1 , sizeof(t));
-
-    //step 2 : check before function call
+    //step 3 : check before checking the condition of recursion - 
     if(t[n][W] != -1){
         return t[n][W];
     }
 
+    //else we will check the recursive condition
     if(wt[n-1] <= W){
-        return max(val[n-1] + knapsackMemo(wt, val , wt[n-1] - W , n-1) , 
-                    kanpsackMemo(wt, val , W , n-1));
-    }else if(wt[n-1] > W){
-        return knapsackMemo(wt , val , W , n-1);
+        return t[n][W] = max(val[n-1] + memoKnapsack(wt, val , W-wt[n-1], n-1) ,
+                            memoKnapsack(wt, val , W , n-1));
     }
-
+    else if(wt[n-1] > W){
+        return t[n][W] = memoKnapsack(wt, val , W , n-1);
+    }
 }
 
 int main(){
-    vector<int> wt;
-    vector<int> val;
-    int W;
-    int n;
-    cin >> n >> W;
-    for(int i=0; i<n; i++){
-        cout << "enter for weight array :" << endl;
-        int x;
-        cin >> x;
-        wt.push_back(x);
-        cout << "enter for value array : " << endl;
-        int y;
-        cin >> y;
-        val.push_back(y);
-    }
-
-    int maxProfit = knapsackMemo(wt, val , W , n);
-
-    cout << "Max Profit of knapsack is : " << maxProfit;
+    vector<int> wt = {2,3,4,5,6};
+    vector<int> val = {10,30,5,3,23};
+    int W = 45;
+    int n = 5;
+    memset(t, -1 , sizeof(t)); //put -1 to all the block of matrix
+    int Profit = memoKnapsack(wt, val , W, n);
+    cout << "Max Profit is : " << Profit;
 }
