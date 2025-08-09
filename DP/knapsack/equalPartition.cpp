@@ -25,8 +25,8 @@ bool subSetSum(vector<int> &arr, int sum){
     for(int i=1; i<=n ; i++){
         for(int j=1; j<=sum; j++){
             if(arr[i-1] <= j){
-                t[i][j] = max(t[i-1][j-arr[i-1]] ,
-                                t[n-1][j]);
+                t[i][j] = t[i-1][j-arr[i-1]] ||
+                                t[n-1][j];
             }else{
                 t[i][j] = t[i-1][j];
             }
