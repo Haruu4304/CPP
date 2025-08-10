@@ -50,3 +50,4 @@ equalPartition.exe
 top_down.exe
 countSubset.exe
 minimumSubsetSum.exe
+countSubsetDiffSum.exe
