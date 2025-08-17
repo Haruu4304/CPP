@@ -52,3 +52,5 @@ countSubset.exe
 minimumSubsetSum.exe
 countSubsetDiffSum.exe
 rod_cutting.exe
+coin_change1.exe
+coin_change2.exe
