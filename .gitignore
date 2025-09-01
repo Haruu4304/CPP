@@ -61,3 +61,9 @@ lcs_substring.exe
 lcs_subsequence.exe
 supersequence.exe
 insertion_deletion.exe
+lcs_palindrome.exe 
+min_deletion_palindrome.exe
+print_SCS.exe
+longest_repeating.exe
+pattern_matching.exe
+min_insertion.exe
